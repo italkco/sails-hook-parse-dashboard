@@ -36,11 +36,11 @@ module.exports.parseDashboard = {
 };
 ```
 
-`mountPath` is routes prefix for Express middleware.  
+`mountPath` is routes prefix for Express middleware  
 `config` is config parameter for Parse Dashboard  
 `options` is options parameter for Parse Dashboard  
 
-Available 'config' and 'options' are available at https://github.com/parse-community/parse-dashboard
+Available `config` and `options` are available at https://github.com/parse-community/parse-dashboard
 
 ## License
 
