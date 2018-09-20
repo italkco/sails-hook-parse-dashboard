@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Sails hook for integrating Parse Dashboard",
   "main": "src/index.js",
+  "sails": {
+    "isHook": true
+  },
   "directories": {
-    "test": "test"
+    "test": "test",
+    "prepublish": "npm run test"
   },
   "scripts": {
     "test": "nyc mocha"
@@ -26,11 +30,18 @@
   },
   "homepage": "https://github.com/italkco/sails-hook-parse-dashboard#readme",
   "devDependencies": {
+    "mocha": "^5.2.0",
     "nyc": "^13.0.1",
     "sails": "^1.0.2"
   },
   "dependencies": {
     "express": "^4.16.3",
     "parse-dashboard": "^1.2.0"
+  },
+  "publishConfig": {
+    "tag": "latest"
+  },
+  "release": {
+    "branch": "master"
   }
 }

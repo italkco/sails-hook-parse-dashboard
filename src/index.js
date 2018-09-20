@@ -6,7 +6,7 @@ module.exports = (sails) => {
     configure: function () {
 
       if (!sails.config.parseDashboard) {
-        
+
         const help = `
         {
           mountPath: '/dashboard',
@@ -20,7 +20,7 @@ module.exports = (sails) => {
           }
         }
         `;
-        
+
         sails.log.warn('sails-hook-parse-dashboard configure is skipped because config \'sails.config.parseDashboard\' is missing!\n\nSample of \'sails.config.parseDashboard\' is:\n' + help + '\nAvailable \'config\' and \'options\' are available here:\nhttps://github.com/parse-community/parse-dashboard\n');
 
         return;
