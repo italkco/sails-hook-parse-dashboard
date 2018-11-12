@@ -1,6 +1,6 @@
 {
   "name": "sails-hook-parse-dashboard",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Sails hook for integrating Parse Dashboard",
   "main": "src/index.js",
   "sails": {

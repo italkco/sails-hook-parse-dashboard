@@ -10,18 +10,20 @@ module.exports = (sails) => {
         const help = `
         {
           mountPath: '/dashboard',
-          config: {
-            apps: [],
-            users: [],
-            ..
-          },
-          options: {
-            ...
+          parseDashboardConfig: {
+            config: {
+              apps: [],
+              users: [],
+              ..
+            },
+            options: {
+              ...
+            }
           }
         }
         `;
 
-        sails.log.warn('sails-hook-parse-dashboard configure is skipped because config \'sails.config.parseDashboard\' is missing!\n\nSample of \'sails.config.parseDashboard\' is:\n' + help + '\nAvailable \'config\' and \'options\' are available here:\nhttps://github.com/parse-community/parse-dashboard\n');
+        sails.log.warn('sails-hook-parse-dashboard configure is skipped because config \'sails.config.parseDashboard\' is missing!\n\nSample of \'sails.config.parseDashboard\' is:\n' + help + '\nSetup instructions for \'parseDashboardConfig\' are available here:\nhttps://github.com/parse-community/parse-dashboard\n');
 
         return;
       }
@@ -31,17 +33,17 @@ module.exports = (sails) => {
       sails.config.http.middleware.order.unshift('parseDashboard');
 
       // Configure dashboard from config/parse-dashboard.js
-      const config = sails.config.parseDashboard.config;
-      const options = sails.config.parseDashboard.options;
+      const parseDashboardConfig = sails.config.parseDashboard.parseDashboardConfig;
 
-      // Get dashboard instance (Express application)
-      const dashboard = parseDashboard(config, options);
+      // Get parse dashboard instance
+      const parseDashboardInstance = parseDashboard(parseDashboardConfig);
 
-      // Wrap the dashboard routes with prefix
-      const dashboardAppWrapper = express();
-      dashboardAppWrapper.use(sails.config.parseDashboard.mountPath, dashboard);
+      // Wrap the dashboard routes with prefix (Express application)
+      const parseDashboardAppWrapper = express();
+      parseDashboardAppWrapper.use(sails.config.parseDashboard.mountPath, parseDashboardInstance);
 
-      sails.config.http.middleware['parseDashboard'] = dashboardAppWrapper;
+      // Set the Parse Dashboard wrapper (Express application) as global Sails.js middleware
+      sails.config.http.middleware['parseDashboard'] = parseDashboardAppWrapper;
     }
   };
 }
