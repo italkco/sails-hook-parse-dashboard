@@ -5,6 +5,8 @@ module.exports = (sails) => {
   return {
     configure: function () {
 
+      sails.log.info('sails.hook.parseDashboard:configure:started');
+
       if (!sails.config.parseDashboard) {
 
         const help = `
@@ -44,6 +46,8 @@ module.exports = (sails) => {
 
       // Set the Parse Dashboard wrapper (Express application) as global Sails.js middleware
       sails.config.http.middleware['parseDashboard'] = parseDashboardAppWrapper;
+
+      sails.log.info('sails.hook.parsedashboard:configure:finished');
     }
   };
 }
