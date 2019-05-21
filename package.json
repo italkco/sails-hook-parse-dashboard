@@ -7,11 +7,11 @@
     "isHook": true
   },
   "directories": {
-    "test": "test",
-    "prepublish": "npm run test"
+    "test": "test"
   },
   "scripts": {
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "prepublish": "npm run test"
   },
   "repository": {
     "type": "git",
