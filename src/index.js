@@ -38,7 +38,7 @@ module.exports = (sails) => {
       const parseDashboardConfig = sails.config.parseDashboard.parseDashboardConfig;
 
       // Get parse dashboard instance
-      const parseDashboardInstance = parseDashboard(parseDashboardConfig.config || {}, parseDashboard.options || {});
+      const parseDashboardInstance = parseDashboard(parseDashboardConfig.config || {}, parseDashboardConfig.options || {});
 
       // Wrap the dashboard routes with prefix (Express application)
       const parseDashboardAppWrapper = express();
